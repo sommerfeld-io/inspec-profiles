@@ -20,7 +20,7 @@ tasks:
     cmds:
       - for:
           matrix:
-            LINTER: ['yaml', 'workflows', 'filenames', 'folders'] #, 'markdown-links']
+            LINTER: ['yaml', 'workflows', 'filenames', 'folders', 'markdown-links']
         cmd: docker compose up lint-{{.ITEM.LINTER}} --exit-code-from lint-{{.ITEM.LINTER}}
 
   check:
