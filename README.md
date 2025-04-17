@@ -3,14 +3,14 @@ hide:
   - navigation
 --- -->
 
-# Template Repository
+# Inspec Profiles
 
-[doc-website]: https://sommerfeld-io.github.io/template-repository
-[github-repo]: https://github.com/sommerfeld-io/template-repository
-[file-issues]: https://github.com/sommerfeld-io/template-repository/issues
+[doc-website]: https://sommerfeld-io.github.io/inspec-profiles
+[github-repo]: https://github.com/sommerfeld-io/inspec-profiles
+[file-issues]: https://github.com/sommerfeld-io/inspec-profiles/issues
 [project-board]: https://github.com/orgs/sommerfeld-io/projects/1/views/17
 
-This project is a template repository for creating new repositories with a pre-defined structure. This template repository is relevant for [sommerfeld.io](https://github.com/sommerfeld-io) projects.
+This project is a Inspec Profiles for creating new repositories with a pre-defined structure. This Inspec Profiles is relevant for [sommerfeld.io](https://github.com/sommerfeld-io) projects.
 
 !!! warning "Todo - Remove if not needed"
     Short introduction to the project, its goals, and objectives.
@@ -30,7 +30,7 @@ This section outlines the basic requirements and features of the project. These 
 ## Usage
 
 !!! warning "Todo - Remove if not needed"
-    The basic commands to get any response from the system. This could be a simple `docker run ...` command. Link to the [Getting started](https://sommerfeld-io.github.io/template-repository/usage) guide for more detailed instructions.
+    The basic commands to get any response from the system. This could be a simple `docker run ...` command. Link to the [Getting started](https://sommerfeld-io.github.io/inspec-profiles/usage) guide for more detailed instructions.
 
 ## Scope and Context
 

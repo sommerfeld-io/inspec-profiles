@@ -11,10 +11,9 @@
 		".vscode",
 
 		"docs",
-		"docs/_assets/**",
-		"docs/about/**",
-		"docs/usage/**",
-		"target/docs/site/**",
+
+        "profiles/*/controls",
+        "profiles/*/vendor",
 
 		"node_modules/**",
 		"public/**",

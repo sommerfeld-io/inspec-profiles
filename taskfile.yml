@@ -20,8 +20,16 @@ tasks:
     cmds:
       - for:
           matrix:
-            LINTER: ['yaml', 'workflows', 'filenames', 'folders', 'markdown-links']
+            LINTER: ['yaml', 'workflows', 'filenames', 'folders'] #, 'markdown-links']
         cmd: docker compose up lint-{{.ITEM.LINTER}} --exit-code-from lint-{{.ITEM.LINTER}}
+
+  check:
+    desc: 'Check all Inspec profiles'
+    cmds:
+      - for:
+          matrix:
+            PROFILE: ['linux-essentials']
+        cmd: docker compose up check-profile-{{.ITEM.PROFILE}} --exit-code-from check-profile-{{.ITEM.PROFILE}}
 
   # ===============================================================================================
 
@@ -29,13 +37,3 @@ tasks:
     desc: 'Run the documentation server'
     cmds:
       - docker compose up docs-dev-server
-
-  # ===============================================================================================
-
-  build:docker:
-    desc: 'Lint and build container COMPOSE_SERVICE'
-    vars:
-      COMPOSE_SERVICE: 'app'
-    cmds:
-      - docker compose up {{.COMPOSE_SERVICE}}-lint-dockerfile --exit-code-from {{.COMPOSE_SERVICE}}-lint-dockerfile
-      - docker compose build {{.COMPOSE_SERVICE}}

@@ -1,12 +1,12 @@
 ---
-site_name: Template Repository
+site_name: Inspec Profiles
 site_url: https://www.sommerfeld.io
 site_author: Sebastian Sommerfeld
 site_description: >-
-  Template Repository for sommerfeld.io projects.
+  Inspec Profiles for sommerfeld.io projects.
 
-repo_name: sommerfeld-io/template-repository
-repo_url: https://github.com/sommerfeld-io/template-repository
+repo_name: sommerfeld-io/inspec-profiles
+repo_url: https://github.com/sommerfeld-io/inspec-profiles
 
 copyright: Copyright &copy; 2024 Sommerfeld.io
 
@@ -38,7 +38,7 @@ theme:
     - content.code.copy
     - content.tabs.link
     # - navigation.tabs
-    - navigation.footer
+    # - navigation.footer
     # - navigation.sections
     - navigation.expand
     - navigation.tracking
@@ -61,20 +61,16 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/sommerfeld-io/template-repository
+      link: https://github.com/sommerfeld-io/inspec-profiles
     - icon: fontawesome/brands/docker
       link: https://hub.docker.com/u/sommerfeldio
 
 nav:
-  - Home:
-      - Startpage: index.md
-      - license.md
-      - Releases on GitHub ⧉: https://github.com/sommerfeld-io/template-repository/releases
-      - Architecture Decision Records on GitHub ⧉: https://github.com/sommerfeld-io/template-repository/issues?q=is%3Aissue+label%3AADR
-      - Security Policy ⧉: https://github.com/sommerfeld-io/.github/blob/main/docs/security.md
-      - How to Contribute ⧉: https://github.com/sommerfeld-io/.github/blob/main/docs/contribute.md
-      - Code of Conduct ⧉: https://github.com/sommerfeld-io/.github/blob/main/docs/code-of-conduct.md
-      - Terms of Use ⧉: https://github.com/sommerfeld-io/.github/blob/main/docs/terms.md
-  - How to Use:
-      - usage/index.md
-      - usage/markdown-components.md
+  - Startpage: index.md
+  - license.md
+  - Releases on GitHub ⧉: https://github.com/sommerfeld-io/inspec-profiles/releases
+  - Architecture Decision Records on GitHub ⧉: https://github.com/sommerfeld-io/inspec-profiles/issues?q=is%3Aissue+label%3AADR
+  - Security Policy ⧉: https://github.com/sommerfeld-io/.github/blob/main/docs/security.md
+  - How to Contribute ⧉: https://github.com/sommerfeld-io/.github/blob/main/docs/contribute.md
+  - Code of Conduct ⧉: https://github.com/sommerfeld-io/.github/blob/main/docs/code-of-conduct.md
+  - Terms of Use ⧉: https://github.com/sommerfeld-io/.github/blob/main/docs/terms.md

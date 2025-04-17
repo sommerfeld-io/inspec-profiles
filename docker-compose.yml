@@ -8,7 +8,6 @@ volumes:
       device: .
       o: bind
 
-
 services:
 
   cleanup:
@@ -17,8 +16,8 @@ services:
     volumes: &volumes
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-      - project-root-volume:/workspaces/template-repository
-    working_dir: &default-workdir /workspaces/template-repository
+      - project-root-volume:/workspaces/inspec-profiles
+    working_dir: &default-workdir /workspaces/inspec-profiles
     command:
       - /bin/ash
       - -c
@@ -65,6 +64,14 @@ services:
     command: --config .lychee.toml .
     tty: *tty
 
+  check-profile-linux-essentials:
+    container_name: ${COMPOSE_PROJECT_NAME}-check-profile-linux-essentials
+    image: &inspec-image chef/inspec:5.22.76
+    volumes: *volumes
+    working_dir: *default-workdir
+    command: check profiles/linux-essentials --chef-license=accept
+    tty: *tty
+
   docs-build:
     container_name: ${COMPOSE_PROJECT_NAME}-docs-build
     image: &docs-image sommerfeldio/mkdocs:latest
@@ -84,20 +91,3 @@ services:
     ports:
       - 3080:8000
     tty: *tty
-
-  app-lint-dockerfile:
-    container_name: ${COMPOSE_PROJECT_NAME}-lint-dockerfile
-    image: &lint-dockerfile-image hadolint/hadolint:latest
-    volumes: *volumes
-    working_dir: *default-workdir
-    entrypoint: hadolint Dockerfile
-
-  app:
-    container_name: ${COMPOSE_PROJECT_NAME}-app
-    image: ${COMPOSE_PROJECT_NAME}-app:${DEV_TAG}
-    build:
-      context: .
-      dockerfile: Dockerfile
-    depends_on:
-      app-lint-dockerfile:
-        condition: service_completed_successfully

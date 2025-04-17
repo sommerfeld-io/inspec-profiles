@@ -1,5 +1,5 @@
 {
-    "name": "template-repository",
+    "name": "inspec-profiles",
     "build": {
         "dockerfile": "Dockerfile"
     },

@@ -35,7 +35,7 @@ repos:
         name: lint-repo
         language: script
         entry: /bin/bash -c 'task lint'
-      - id: build
-        name: build
+      - id: check-profiles
+        name: check-profiles
         language: script
-        entry: /bin/bash -c 'task build:docker'
+        entry: /bin/bash -c 'task check'
