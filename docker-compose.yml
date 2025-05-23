@@ -1,4 +1,11 @@
 ---
+x-volumes: &volumes
+  - /etc/timezone:/etc/timezone:ro
+  - /etc/localtime:/etc/localtime:ro
+  - project-root-volume:/workspaces/inspec-profiles
+x-workdir: &default-workdir /workspaces/inspec-profiles
+x-tty: &tty true
+
 volumes:
 
   project-root-volume:
@@ -9,21 +16,6 @@ volumes:
       o: bind
 
 services:
-
-  cleanup:
-    container_name: ${COMPOSE_PROJECT_NAME}-cleanup
-    image: alpine:latest
-    volumes: &volumes
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
-      - project-root-volume:/workspaces/inspec-profiles
-    working_dir: &default-workdir /workspaces/inspec-profiles
-    command:
-      - /bin/ash
-      - -c
-      - |
-        rm -rf target
-    tty: &tty true
 
   lint-yaml:
     container_name: ${COMPOSE_PROJECT_NAME}-lint-yaml
@@ -79,9 +71,6 @@ services:
     working_dir: *default-workdir
     command: build
     tty: *tty
-    depends_on:
-      cleanup:
-        condition: service_completed_successfully
 
   docs-dev-server:
     container_name: ${COMPOSE_PROJECT_NAME}-docs-dev-server
