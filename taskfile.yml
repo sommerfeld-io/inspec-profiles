@@ -5,7 +5,6 @@ dotenv: ['.env']
 
 vars:
   INSPEC_COMPOSE_SERVICE: chef/inspec:5.22.76
-  INSPEC_PROFILES: ['ansible-baseline']
   REPO: https://raw.githubusercontent.com/sommerfeld-io/.github
 
 tasks:
@@ -75,12 +74,17 @@ tasks:
     desc: 'Generate Markdown files for documentation'
     cmds:
       - echo "Collecting documentation from other Markdown files ..."
+      - mkdir -p docs/profiles
       - task: internal:copy
         vars: { SRC: docs/index.md, DEST: README.md }
       - task: internal:copy
         vars: { SRC: docs/license.md, DEST: LICENSE.md }
+      - for: &profiles ['linux-essentials']
+        task: internal:copy
+        vars: { SRC: "profiles/{{ .ITEM }}/README.md", DEST: "docs/profiles/{{ .ITEM }}.md" }
 
   docs:run:
     desc: 'Run the documentation server'
     cmds:
+      - task: docs:generate
       - docker compose up docs-dev-server
