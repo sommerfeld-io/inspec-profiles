@@ -9,6 +9,7 @@ This project is a collection of Chef Inspec profiles for use in other sommerfeld
 
 - [Documentation Website][doc-website]
 - [Github Repository][github-repo]
+- [Sonarcloud Code Quality and Security Analysis](https://sonarcloud.io/project/overview?id=sommerfeld-io_inspec-profiles)
 - [Where to file issues][file-issues]
 - [Project Board for Issues and Pull Requests][project-board]
 
