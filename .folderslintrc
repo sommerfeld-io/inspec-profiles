@@ -12,6 +12,7 @@
 		".vscode",
 
 		"docs",
+		"docs/.assets/**",
         "docs/profiles",
 
         "profiles/*/controls",
