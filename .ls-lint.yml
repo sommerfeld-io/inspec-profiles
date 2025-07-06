@@ -40,6 +40,7 @@ ignore:
   - .git
   - .idea
   - .vscode
+  - .task
   - node_modules
   - target/docs/site
   - target
