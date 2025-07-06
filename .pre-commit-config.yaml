@@ -27,7 +27,7 @@ repos:
         name: lint-repo
         language: script
         entry: /bin/bash -c 'task lint'
-      # - id: check-profiles
-      #   name: check-profiles
-      #   language: script
-      #   entry: /bin/bash -c 'task check'
+      - id: check-profiles
+        name: check-profiles
+        language: script
+        entry: /bin/bash -c 'task check'
