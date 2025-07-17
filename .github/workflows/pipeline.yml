@@ -78,6 +78,22 @@ jobs:
         run: docker compose up check-profile-${{ matrix.profile }} --exit-code-from check-profile-${{ matrix.profile }}
         shell: bash
 
+  files-should-exist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Mandatory files should exist
+        uses: chrisreddington/validate-file-exists@v0.0.7
+        with:
+          required-files: >
+            .editorconfig,
+            .gitignore,
+            taskfile.yml,
+            .github/dependabot.yml,
+            .task/.gitkeep
+
+
   # ----- Build Docs stage ------------------------------------------------------------------------
 
   generate-docs:
@@ -85,6 +101,8 @@ jobs:
     needs: [
       'lint',
       'check-profile',
+      'files-should-exist',
+      'shellcheck',
     ]
     if: ${{ github.actor != 'dependabot[bot]' }}
     permissions:
@@ -119,7 +137,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [
       'generate-docs',
-      'shellcheck',
     ]
     if: ${{ (github.actor != 'dependabot[bot]') && (github.ref == 'refs/heads/main') }}
     permissions:
