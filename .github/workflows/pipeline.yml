@@ -75,6 +75,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Run check-profile-${{ matrix.profile }} from docker-compose.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: docker compose up check-profile-${{ matrix.profile }} --exit-code-from check-profile-${{ matrix.profile }}
         shell: bash
 
