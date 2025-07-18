@@ -1,4 +1,4 @@
-title "Esential checks for everything running linux (workstations, raspi nodes and container images)"
+title "System checks for everything running linux (workstations, raspi nodes and container images)"
 
 control 'linux-essentials-01' do
   impact 1.0
