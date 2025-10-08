@@ -1,19 +1,18 @@
-title "System checks for everything running linux (workstations, raspi nodes and container images)"
+title 'Global System Configuration'
 
-control 'linux-essentials-01' do
-  impact 1.0
-  title 'Verify OS properties'
-  desc 'Ensure a valid OS'
+username = input('username', value: 'default_user')
+emailAddress = input('emailAddress', value: 'noreply@example.com')
+default_mode = input('default_mode', value: '0755')
 
-  describe command('cat /etc/os-release') do
-    its('stdout') { should match(/(Alpine|Ubuntu)/) }
+control 'system-01' do
+  title 'Verify Operating System Version'
+  desc 'Ensure the operating system version is as expected'
+
+  describe os.name do
+    it { should eq 'ubuntu' }
   end
 
-  describe package('bash') do
-    it { should be_installed } if file('/etc/os-release').content.match?(/Ubuntu/)
-  end
-
-  describe package('ash') do
-    it { should be_installed } if file('/etc/os-release').content.match?(/Alpine/)
+  describe os.release do
+    it { should eq '25.04' }
   end
 end
