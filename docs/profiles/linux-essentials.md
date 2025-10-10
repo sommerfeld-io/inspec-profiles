@@ -2,7 +2,9 @@
 
 The `linux-essentials` profile ensures all physical and virtual machines, as well as Docker images, comply with the same foundational set of rules.
 
-Add a dependency to your `inspec.yml` file:
+> :zap: **Note**: This profile is intended to run against our infrastructure and is not designed for public use. It may contain checks that are specific to our environment and may not be applicable to other systems.
+
+Add a dependency to the `inspec.yml` file:
 
 ```yaml
 ---
