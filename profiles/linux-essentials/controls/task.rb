@@ -39,7 +39,7 @@ control 'task-02' do
       it { should exist }
       it { should be_directory }
       it { should be_owned_by username }
-      its('mode') { should cmp default_mode }
+      its('mode') { should cmp 750 }
     end
   end
 

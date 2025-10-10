@@ -25,7 +25,7 @@ control 'ssh-01' do
     it { should be_file }
     it { should be_owned_by username }
     it { should be_grouped_into username }
-    its('mode') { should cmp '0644' }
+    its('mode') { should cmp '0640' }
   end
 end
 
