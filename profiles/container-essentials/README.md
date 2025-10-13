@@ -1,8 +1,6 @@
-# Profile `linux-essentials`
+# Profile `container-essentials`
 
-The `linux-essentials` profile ensures all physical and virtual machines comply with the same foundational set of rules.
-
-> :zap: **Note**: This profile is intended to run against our infrastructure and is not designed for public use. It may contain checks that are specific to our environment and may not be applicable to other systems.
+The `container-essentials` profile ensures all Docker images comply with the same foundational set of rules.
 
 Add a dependency to the `inspec.yml` file:
 
@@ -19,11 +17,11 @@ version: 0.1.0
 supports:
   platform: os
 depends:
-  - name: linux-essentials
+  - name: container-essentials
     git: https://github.com/sommerfeld-io/inspec-profiles.git
     branch: main
     # tag: v0.0.2
-    relative_path: profiles/linux-essentials
+    relative_path: profiles/container-essentials
 ```
 
 Call the profile from a control file (e.g., `some-control.rb`):
@@ -31,6 +29,6 @@ Call the profile from a control file (e.g., `some-control.rb`):
 ```rb
 title "Checks for some basic stuff"
 
-include_controls 'linux-essentials' do
+include_controls 'container-essentials' do
 end
 ```
