@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Login to Container Registry
         uses: docker/login-action@v3
         with:
@@ -48,7 +48,7 @@ jobs:
         linter: ['yaml', 'workflows', 'filenames', 'folders', 'markdown-links']
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Login to Container Registry
         uses: docker/login-action@v3
         with:
@@ -69,7 +69,7 @@ jobs:
         profile: ['container-essentials', 'linux-essentials']
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Login to Container Registry
         uses: docker/login-action@v3
         with:
@@ -87,7 +87,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Mandatory files should exist
         uses: chrisreddington/validate-file-exists@v0.0.8
         with:
@@ -115,7 +115,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: ${{github.ref}}
       - name: Install Task
@@ -149,7 +149,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: ${{github.ref}}
       - name: Info - package.json
