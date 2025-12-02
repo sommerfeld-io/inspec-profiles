@@ -15,13 +15,22 @@ control 'packages-01' do
     '/usr/bin/jq',
     '/usr/bin/make',
     '/usr/bin/ncdu',
-    '/usr/bin/neofetch',
+    '/usr/bin/fastfetch',
     '/usr/bin/vim',
   ]
   should_exist.each do |binary|
     describe file(binary) do
       it { should exist }
       its('mode') { should cmp default_mode }
+    end
+  end
+
+  should_not_exist = [
+    '/usr/bin/neofetch',
+  ]
+  should_not_exist.each do |binary|
+    describe file(binary) do
+      it { should_not exist }
     end
   end
 end
