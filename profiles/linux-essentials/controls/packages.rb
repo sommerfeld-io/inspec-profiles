@@ -7,9 +7,7 @@ default_mode = input('default_mode', value: '0755')
 control 'packages-01' do
   impact 1.0
   title 'Check for essential tools'
-  desc 'Ensure essential tools are installed
-    Ansible tasks:
-    * components/ansible/tasks/common-packages.yml'
+  desc 'Ensure essential tools are installed'
 
   should_exist = [
     '/usr/bin/curl',
@@ -32,20 +30,10 @@ if os.arch == 'x86_64'
   control 'packages-02-amd64' do
     impact 1.0
     title 'Check for amd64 specific packages'
-    desc 'Ensure amd64 specific packages are installed
-      This applies to Ubuntu workstations
-      Ansible tasks:
-      * components/ansible/tasks/ubuntu-ansible.yml
-      * components/ansible/tasks/ubuntu-chrome.yml
-      * components/ansible/tasks/ubuntu-docker.yml
-      * components/ansible/roles/github-cli/tasks/main.yml
-      * components/ansible/roles/minikube/tasks/main.yml
-      * components/ansible/tasks/ubuntu-packages.yml
-      * components/ansible/tasks/ubuntu-sublime.yml'
+    desc 'Ensure amd64 specific packages are installed (desktop workstations)'
 
     should_exist = [
       '/usr/bin/ansible',
-      '/usr/bin/asciidoctor',
       '/usr/bin/balena-etcher',
       '/usr/bin/chromium-browser',
       '/usr/bin/conky',
@@ -59,8 +47,6 @@ if os.arch == 'x86_64'
       '/usr/bin/subl', # sublime text
       '/usr/bin/tilix',
       '/usr/bin/unrar',
-      '/usr/bin/vagrant',
-      '/usr/bin/virtualbox',
       '/usr/bin/pre-commit',
       '/usr/bin/hostnamectl',
     ]
@@ -72,6 +58,7 @@ if os.arch == 'x86_64'
     end
 
     should_not_exist = [
+      '/usr/bin/asciidoctor',
       '/usr/bin/minikube',
       '/usr/bin/yarn',
       '/usr/local/bin/helm',
@@ -86,17 +73,40 @@ if os.arch == 'x86_64'
   control 'packages-03-amd64' do
     impact 1.0
     title 'Check for amd64 specific snap packages'
-    desc 'Ensure amd64 specific snap packages are installed
-      This applies to Ubuntu workstations
-      Ansible tasks:
-      * components/ansible/tasks/ubuntu-packages.yml'
+    desc 'Ensure amd64 specific snap packages are installed (desktop workstations)'
 
     should_exist = [
       '/snap/bin/code',
-      '/snap/bin/intellij-idea-community',
-      '/snap/bin/intellij-idea-ultimate',
       '/snap/bin/postman',
       '/snap/bin/spotify',
+    ]
+    should_exist.each do |binary|
+      describe file(binary) do
+        it { should exist }
+        its('mode') { should cmp default_mode }
+      end
+
+    should_not_exist = [
+      '/snap/bin/intellij-idea-community',
+      '/snap/bin/intellij-idea-ultimate',
+    ]
+    should_not_exist.each do |binary|
+      describe file(binary) do
+        it { should_not exist }
+      end
+    end
+    end
+  end
+
+  control 'packages-04-amd64' do
+    impact 1.0
+    title 'Check for amd64 specific packages (media players etc.)'
+    desc 'Ensure amd64 specific packages (media players etc.) are installed (desktop workstations)'
+
+    should_exist = [
+      '/usr/bin/asunder',
+      '/usr/bin/brasero',
+      '/usr/bin/vlc',
     ]
     should_exist.each do |binary|
       describe file(binary) do
@@ -106,18 +116,14 @@ if os.arch == 'x86_64'
     end
   end
 
-  control 'packages-04-amd64' do
+  control 'packages-05-virtualization' do
     impact 1.0
-    title 'Check for amd64 specific packages (media players etc.)'
-    desc 'Ensure amd64 specific packages (media players etc.) are installed
-      This applies to Ubuntu workstations
-      Ansible tasks:
-      * components/ansible/tasks/ubuntu-media-players.yml'
+    title 'Check for virtualization packages on amd64'
+    desc 'Ensure  virtualization packages on amd64 machines are installed (desktop workstations)'
 
     should_exist = [
-      '/usr/bin/asunder',
-      '/usr/bin/brasero',
-      '/usr/bin/vlc',
+      '/usr/bin/vagrant',
+      '/usr/bin/virtualbox',
     ]
     should_exist.each do |binary|
       describe file(binary) do

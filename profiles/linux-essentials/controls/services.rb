@@ -7,9 +7,7 @@ mode = '0770'
 control 'services-01' do
   impact 1.0
   title 'Ensure essential directories and files are present'
-  desc 'Check for the presence of essential directories and files and their permissions
-    Ansible tasks:
-    * components/ansible/tasks/common-telemetry.yml'
+  desc 'Check for the presence of essential directories and files and their permissions'
 
   directories = [
   ]

@@ -7,9 +7,7 @@ default_mode = input('default_mode', value: '0755')
 control 'atuin-01' do
   impact 1.0
   title 'Check for atuin'
-  desc 'Ensure atuin is installed
-    Ansible tasks:
-    * components/ansible/tasks/common-packages.yml'
+  desc 'Ensure atuin is installed'
 
   should_exist = [
     "/home/#{username}/.atuin/bin/atuin",

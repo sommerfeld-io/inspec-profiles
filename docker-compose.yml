@@ -64,18 +64,3 @@ services:
     working_dir: *default-workdir
     command: check profiles/linux-essentials --chef-license=accept
     tty: *tty
-
-  docs-build:
-    image: &docs-image sommerfeldio/mkdocs:latest
-    volumes: *volumes
-    working_dir: *default-workdir
-    command: build
-    tty: *tty
-
-  docs-dev-server:
-    image: *docs-image
-    volumes: *volumes
-    working_dir: *default-workdir
-    ports:
-      - 3080:8000
-    tty: *tty

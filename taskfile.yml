@@ -36,7 +36,10 @@ tasks:
       - rm -rf .cache
       - rm -rf node_modules
       - rm -rf target
+      - sudo rm -rf .devcontainer/ops
       - find . -type f -exec chmod +r {} +
+      - find . -type d -exec chmod +r {} +
+      - find . -name "*.sh" -type f -exec chmod +x {} +
 
   # ===============================================================================================
 
@@ -51,24 +54,3 @@ tasks:
     cmds:
       - for: ['container-essentials', 'linux-essentials']
         cmd: docker compose up check-profile-{{ .ITEM }} --exit-code-from check-profile-{{ .ITEM }}
-
-  # ===============================================================================================
-
-  docs:generate:
-    desc: 'Generate Markdown files for documentation'
-    cmds:
-      - echo "Collecting documentation from other Markdown files ..."
-      - mkdir -p docs/profiles
-      - task: common:copy
-        vars: { SRC: docs/index.md, DEST: README.md }
-      - task: common:copy
-        vars: { SRC: docs/license.md, DEST: LICENSE.md }
-      - for: &profiles ['linux-essentials']
-        task: common:copy
-        vars: { SRC: "profiles/{{ .ITEM }}/README.md", DEST: "docs/profiles/{{ .ITEM }}.md" }
-
-  docs:run:
-    desc: 'Run the documentation server'
-    cmds:
-      - task: docs:generate
-      - docker compose up docs-dev-server

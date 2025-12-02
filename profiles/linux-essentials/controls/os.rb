@@ -6,11 +6,11 @@ control 'linux-essentials-01' do
   desc 'Ensure a valid OS'
 
   describe command('cat /etc/os-release') do
-    its('stdout') { should match(/(Alpine|Ubuntu)/) }
+    its('stdout') { should match(/(Alpine|Ubuntu|Arch)/) }
   end
 
   describe package('bash') do
-    it { should be_installed } if file('/etc/os-release').content.match?(/Ubuntu/)
+    it { should be_installed } if file('/etc/os-release').content.match?(/(Ubuntu|Arch)/)
   end
 
   describe package('ash') do

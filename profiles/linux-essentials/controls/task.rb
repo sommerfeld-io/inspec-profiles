@@ -7,9 +7,7 @@ default_mode = input('default_mode', value: '0755')
 control 'task-01' do
   impact 1.0
   title 'Ensure task is installed'
-  desc 'Ensure task is installed
-    Ansible tasks:
-    * components/ansible/tasks/common-task-setup.yml'
+  desc 'Ensure task is installed'
 
   should_exist = [
     '/usr/bin/task',
@@ -26,9 +24,7 @@ end
 control 'task-02' do
   impact 1.0
   title 'Ensure directories and files are present'
-  desc 'Check for the presence of directories and files and their permissions
-    Ansible tasks:
-    * components/ansible/tasks/common-task-config.yml'
+  desc 'Check for the presence of directories and files and their permissions'
 
   directories = [
     "/home/#{username}/.docker-stacks",

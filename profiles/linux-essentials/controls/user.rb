@@ -13,6 +13,7 @@ control 'user-01' do
 
   describe user(username) do
     it { should exist }
-    its('shell') { should eq '/bin/bash' }
+    its('shell') { should eq '/bin/ash' } if file('/etc/os-release').content.match?(/Alpine/)
+    its('shell') { should eq '/bin/bash' } if file('/etc/os-release').content.match?(/(Ubuntu|Arch)/)
   end
 end

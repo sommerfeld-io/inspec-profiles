@@ -8,9 +8,7 @@ ssh_key_path = "/home/#{username}/.ssh/id_rsa"
 
 control 'ssh-01' do
   title 'Verify SSH keypair presence'
-  desc 'Ensure the SSH private and public key files are present and have correct permissions
-    Ansible tasks:
-    * components/ansible/tasks/common-ssh.yml'
+  desc 'Ensure the SSH private and public key files are present and have correct permissions'
 
   describe file(ssh_key_path) do
     it { should exist }
@@ -31,9 +29,7 @@ end
 
 control 'ssh-02' do
   title 'Verify SSH key strength'
-  desc 'Ensure the SSH private key has the correct strength (bits)
-    Ansible tasks:
-    * components/ansible/tasks/common-ssh.yml'
+  desc 'Ensure the SSH private key has the correct strength (bits)'
 
   describe command("ssh-keygen -lf #{ssh_key_path}") do
     its('stdout') { should match /4096/ }

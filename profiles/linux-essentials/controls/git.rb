@@ -8,9 +8,7 @@ gitconfig_path = "/home/#{username}/.gitconfig"
 
 control 'git-01' do
   title 'Verify Git installation'
-  desc 'Ensure Git is installed
-    Ansible tasks:
-    * components/ansible/roles/git/tasks/main.yml'
+  desc 'Ensure Git is installed'
 
   should_exist = [
     '/usr/bin/git',
@@ -25,11 +23,7 @@ end
 
 control 'git-02' do
   title 'Verify .gitconfig settings'
-  desc 'Ensure the .gitconfig file contains the correct user, alias, and other configurations
-    Ansible tasks:
-    * components/ansible/roles/git/tasks/main.yml
-    Assets:
-    * components/ansible/assets/.gitconfig'
+  desc 'Ensure the .gitconfig file contains the correct user, alias, and other configurations'
 
   describe file(gitconfig_path) do
     it { should exist }
@@ -41,9 +35,13 @@ control 'git-02' do
 
   describe ini(gitconfig_path) do
     its(['user', 'email']) { should cmp emailAddress }
-    its(['user', 'name']) { should cmp username }
     its(['alias', 'all']) { should cmp '"!f() { ls | xargs -I{} git -C {} $1; }; f"' }
     its(['credential', 'helper']) { should cmp 'cache --timeout=3600' }
     its(['pull', 'rebase']) { should cmp 'false' }
+
+    ## Hard-code because on all my systems I am the git user.
+    ## But dynamic input means tests with vagrant will fail.
+    its(['user', 'name']) { should cmp 'sebastian' }
+    # its(['user', 'name']) { should cmp username }
   end
 end

@@ -9,7 +9,7 @@ control 'system-01' do
   desc 'Ensure the operating system version is as expected'
 
   describe os.name do
-    it { should eq 'ubuntu' }
+    it { should be_in ['ubuntu', 'arch'] }
   end
 
   describe os.release do

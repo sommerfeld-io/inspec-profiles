@@ -7,9 +7,7 @@ default_mode = input('default_mode', value: '0755')
 control 'fs-01' do
   impact 1.0
   title 'Ensure essential directories and files are present'
-  desc 'Check for the presence of essential directories and files and their permissions
-    Ansible tasks:
-    * components/ansible/roles/filesystem/tasks/main.yml'
+  desc 'Check for the presence of essential directories and files and their permissions'
 
   directories = [
     "/home/#{username}/.config",
