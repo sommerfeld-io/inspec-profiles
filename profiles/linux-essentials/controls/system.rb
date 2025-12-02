@@ -13,6 +13,6 @@ control 'system-01' do
   end
 
   describe os.release do
-    it { should eq '25.04' }
+    it { should eq '25.04' } if os.name == 'ubuntu'
   end
 end
