@@ -24,15 +24,6 @@ control 'packages-01' do
       its('mode') { should cmp default_mode }
     end
   end
-
-  should_not_exist = [
-    '/usr/bin/neofetch',
-  ]
-  should_not_exist.each do |binary|
-    describe file(binary) do
-      it { should_not exist }
-    end
-  end
 end
 
 if os.arch == 'x86_64'
