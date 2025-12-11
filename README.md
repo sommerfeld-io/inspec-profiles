@@ -18,6 +18,10 @@ This repository contains multiple profiles in subfolders. You cannot run them di
 
 All profiles are tested with [`chef/inspec:5.22.76`](https://hub.docker.com/r/chef/inspec).
 
+## Risks and Technical Debts
+
+All issues labeled as `risk` (= some sort of risk or a technical debt) or `security` (= disclosed security issues - e.g. CVEs) [are tracked as GitHub issue](https://github.com/sommerfeld-io/inspec-profiles/issues?q=is%3Aissue+label%3Asecurity%2Crisk+is%3Aopen) and carry the respective label.
+
 ## Contact
 
 Feel free to contact me via <sebastian@sommerfeld.io> or [raise an issue in this repository][file-issues].
