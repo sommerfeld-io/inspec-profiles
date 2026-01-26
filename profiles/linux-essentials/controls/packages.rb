@@ -49,6 +49,7 @@ if os.arch == 'x86_64'
       '/usr/bin/unrar',
       '/usr/bin/pre-commit',
       '/usr/bin/hostnamectl',
+      '/usr/local/bin/ctop',
     ]
     should_exist.each do |binary|
       describe file(binary) do
