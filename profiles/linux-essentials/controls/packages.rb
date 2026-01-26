@@ -2,7 +2,7 @@ title 'Ensure common packages are installed'
 
 username = input('username', value: 'default_user')
 emailAddress = input('emailAddress', value: 'noreply@example.com')
-default_mode = input('default_mode', value: '0755')
+mode = '0755'
 
 control 'packages-01' do
   impact 1.0
@@ -21,7 +21,7 @@ control 'packages-01' do
   should_exist.each do |binary|
     describe file(binary) do
       it { should exist }
-      its('mode') { should cmp default_mode }
+      its('mode') { should cmp mode }
     end
   end
 end
@@ -53,7 +53,7 @@ if os.arch == 'x86_64'
     should_exist.each do |binary|
       describe file(binary) do
         it { should exist }
-        its('mode') { should cmp default_mode }
+        its('mode') { should cmp mode }
       end
     end
 
@@ -84,7 +84,7 @@ if os.arch == 'x86_64'
     should_exist.each do |binary|
       describe file(binary) do
         it { should exist }
-        its('mode') { should cmp default_mode }
+        its('mode') { should cmp mode }
       end
 
     should_not_exist = [
@@ -112,7 +112,7 @@ if os.arch == 'x86_64'
     should_exist.each do |binary|
       describe file(binary) do
         it { should exist }
-        its('mode') { should cmp default_mode }
+        its('mode') { should cmp mode }
       end
     end
   end
@@ -129,7 +129,7 @@ if os.arch == 'x86_64'
     should_exist.each do |binary|
       describe file(binary) do
         it { should exist }
-        its('mode') { should cmp default_mode }
+        its('mode') { should cmp mode }
       end
     end
   end
@@ -146,7 +146,7 @@ if os.arch == 'aarch64'
     should_exist.each do |binary|
       describe file(binary) do
         it { should exist }
-        its('mode') { should cmp default_mode }
+        its('mode') { should cmp mode }
       end
     end
   end

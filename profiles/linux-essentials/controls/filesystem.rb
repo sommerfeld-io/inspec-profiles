@@ -2,7 +2,6 @@ title 'Filesystem Check'
 
 username = input('username', value: 'default_user')
 emailAddress = input('emailAddress', value: 'noreply@example.com')
-default_mode = input('default_mode', value: '0750')
 
 control 'fs-01' do
   impact 1.0
@@ -25,7 +24,7 @@ control 'fs-01' do
       it { should exist }
       it { should be_directory }
       it { should be_owned_by username }
-      its('mode') { should cmp default_mode }
+      its('mode') { should cmp '0750' }
     end
   end
 end

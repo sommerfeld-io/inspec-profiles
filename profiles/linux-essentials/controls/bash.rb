@@ -2,7 +2,6 @@ title 'Bash Configuration Check'
 
 username = input('username', value: 'default_user')
 emailAddress = input('emailAddress', value: 'noreply@example.com')
-default_mode = input('default_mode', value: '0755')
 
 bashrc_path = "/home/#{username}/.bashrc"
 bash_aliases_path = "/home/#{username}/.bash_aliases"

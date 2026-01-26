@@ -2,7 +2,6 @@ title 'Ensure task is installed and configured'
 
 username = input('username', value: 'default_user')
 emailAddress = input('emailAddress', value: 'noreply@example.com')
-default_mode = input('default_mode', value: '0755')
 
 control 'task-01' do
   impact 1.0
@@ -16,7 +15,7 @@ control 'task-01' do
     describe file(binary) do
       it { should exist }
       it { should be_file }
-      its('mode') { should cmp default_mode }
+      its('mode') { should cmp '0755' }
     end
   end
 end

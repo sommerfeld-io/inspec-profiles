@@ -2,7 +2,6 @@ title 'Git Configuration'
 
 username = input('username', value: 'default_user')
 emailAddress = input('emailAddress', value: 'noreply@example.com')
-default_mode = input('default_mode', value: '0755')
 
 gitconfig_path = "/home/#{username}/.gitconfig"
 
@@ -16,7 +15,7 @@ control 'git-01' do
   should_exist.each do |binary|
     describe file(binary) do
       it { should exist }
-      its('mode') { should cmp default_mode }
+      its('mode') { should cmp '0755' }
     end
   end
 end

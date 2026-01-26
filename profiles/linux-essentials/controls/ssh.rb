@@ -2,7 +2,6 @@ title 'SSH Configuration and Keypair Verification'
 
 username = input('username', value: 'default_user')
 emailAddress = input('emailAddress', value: 'noreply@example.com')
-default_mode = input('default_mode', value: '0755')
 
 ssh_key_path = "/home/#{username}/.ssh/id_rsa"
 
