@@ -1,6 +1,6 @@
 {
   "name": "inspec-profiles",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "directories": {
     "doc": "docs"
   },
