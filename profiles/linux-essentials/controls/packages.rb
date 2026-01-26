@@ -34,7 +34,6 @@ if os.arch == 'x86_64'
 
     should_exist = [
       '/usr/bin/ansible',
-      '/usr/bin/balena-etcher',
       '/usr/bin/chromium-browser',
       '/usr/bin/conky',
       '/usr/bin/docker',
@@ -60,6 +59,7 @@ if os.arch == 'x86_64'
 
     should_not_exist = [
       '/usr/bin/asciidoctor',
+      '/usr/bin/balena-etcher',
       '/usr/bin/minikube',
       '/usr/bin/yarn',
       '/usr/local/bin/helm',
