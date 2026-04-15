@@ -49,6 +49,11 @@ if os.arch == 'x86_64'
       '/usr/bin/pre-commit',
       '/usr/bin/hostnamectl',
       '/usr/local/bin/ctop',
+      '/usr/bin/node',
+      '/usr/bin/npm',
+      '/usr/bin/npx',
+      "/home/#{username}/.local/bin/gemini",
+      "/home/#{username}/.local/bin/copilot",
     ]
     should_exist.each do |binary|
       describe file(binary) do
