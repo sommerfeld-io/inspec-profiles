@@ -27,7 +27,7 @@ control 'http-01' do
   desc 'Checks if the HTTP services are listening and are accessible'
 
   ports = [
-    '9100', # node exporter
+    # '9100', # node exporter
     '9110', # cAdvisor, 307 redirect to /containers
     '12345', # alloy
   ]

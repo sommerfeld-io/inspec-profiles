@@ -11,7 +11,6 @@ control 'fs-01' do
   directories = [
     "/home/#{username}/.config",
     "/home/#{username}/.config/autostart",
-    "/home/#{username}/.repos",
     "/home/#{username}/work",
     "/home/#{username}/work/repos",
     "/home/#{username}/work/repos/sommerfeld-io",
@@ -25,6 +24,21 @@ control 'fs-01' do
       it { should be_directory }
       it { should be_owned_by username }
       its('mode') { should cmp '0750' }
+    end
+  end
+end
+
+control 'fs-02' do
+  impact 1.0
+  title 'Ensure non-essential directories are absent'
+  desc 'Check for the absence of non-essential / outdated / deprecated directories'
+
+  directories = [
+    "/home/#{username}/.repos",
+  ]
+  directories.each do |directory|
+    describe file(directory) do
+      it { should_not exist }
     end
   end
 end
