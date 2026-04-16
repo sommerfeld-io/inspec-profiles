@@ -52,8 +52,6 @@ if os.arch == 'x86_64'
       '/usr/bin/node',
       '/usr/bin/npm',
       '/usr/bin/npx',
-      "/home/#{username}/.local/bin/gemini",
-      "/home/#{username}/.local/bin/copilot",
     ]
     should_exist.each do |binary|
       describe file(binary) do
@@ -76,7 +74,38 @@ if os.arch == 'x86_64'
     end
   end
 
-  control 'packages-03-amd64' do
+  if os.arch == 'x86_64'
+  control 'packages-03-amd64-node-applications' do
+    impact 1.0
+    title 'Check for amd64 specific node applications'
+    desc 'Ensure amd64 specific node applications are installed (desktop workstations)'
+
+    should_exist = [
+      "/home/#{username}/.local/bin/gemini",
+      "/home/#{username}/.local/bin/copilot",
+    ]
+    should_exist.each do |binary|
+      describe file(binary) do
+        it { should exist }
+        its('mode') { should cmp 0770 }
+      end
+    end
+
+    should_not_exist = [
+      '/usr/bin/asciidoctor',
+      '/usr/bin/balena-etcher',
+      '/usr/bin/minikube',
+      '/usr/bin/yarn',
+      '/usr/local/bin/helm',
+    ]
+    should_not_exist.each do |binary|
+      describe file(binary) do
+        it { should_not exist }
+      end
+    end
+  end
+
+  control 'packages-04-amd64' do
     impact 1.0
     title 'Check for amd64 specific snap packages'
     desc 'Ensure amd64 specific snap packages are installed (desktop workstations)'
@@ -104,7 +133,7 @@ if os.arch == 'x86_64'
     end
   end
 
-  control 'packages-04-amd64' do
+  control 'packages-05-amd64' do
     impact 1.0
     title 'Check for amd64 specific packages (media players etc.)'
     desc 'Ensure amd64 specific packages (media players etc.) are installed (desktop workstations)'
@@ -122,7 +151,7 @@ if os.arch == 'x86_64'
     end
   end
 
-  control 'packages-05-virtualization' do
+  control 'packages-06-virtualization' do
     impact 1.0
     title 'Check for virtualization packages on amd64'
     desc 'Ensure  virtualization packages on amd64 machines are installed (desktop workstations)'
