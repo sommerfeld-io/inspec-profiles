@@ -74,7 +74,6 @@ if os.arch == 'x86_64'
     end
   end
 
-  if os.arch == 'x86_64'
   control 'packages-03-amd64-node-applications' do
     impact 1.0
     title 'Check for amd64 specific node applications'
@@ -120,6 +119,7 @@ if os.arch == 'x86_64'
         it { should exist }
         its('mode') { should cmp mode }
       end
+    end
 
     should_not_exist = [
       '/snap/bin/intellij-idea-community',
@@ -129,7 +129,6 @@ if os.arch == 'x86_64'
       describe file(binary) do
         it { should_not exist }
       end
-    end
     end
   end
 
