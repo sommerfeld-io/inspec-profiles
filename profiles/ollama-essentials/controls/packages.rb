@@ -9,7 +9,7 @@ control 'ollama-packages-01' do
   desc 'Ensure essential ollama packages are installed'
 
   should_exist = [
-    'profiles/linux-essentials',
+    '/usr/local/bin/ollama',
   ]
   should_exist.each do |binary|
     describe file(binary) do
