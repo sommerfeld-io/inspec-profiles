@@ -43,5 +43,5 @@ tasks:
   check:
     desc: 'Check all Inspec profiles'
     cmds:
-      - for: ['container-essentials', 'linux-essentials']
+      - for: ['container-essentials', 'linux-essentials', 'ollama-essentials']
         cmd: docker compose up check-profile-{{ .ITEM }} --exit-code-from check-profile-{{ .ITEM }}
