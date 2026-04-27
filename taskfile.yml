@@ -45,3 +45,11 @@ tasks:
     cmds:
       - for: ['container-essentials', 'linux-essentials', 'ollama-essentials']
         cmd: docker compose up check-profile-{{ .ITEM }} --exit-code-from check-profile-{{ .ITEM }}
+
+  # ===============================================================================================
+
+  copilot:lint-and-fix:
+    desc: 'Use GitHub Copilot to lint and fix issues in the project'
+    cmds:
+      - task: cleanup
+      - copilot --allow-all --prompt "/lint-and-fix"
