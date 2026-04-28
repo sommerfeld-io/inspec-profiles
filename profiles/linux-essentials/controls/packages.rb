@@ -36,7 +36,6 @@ if os.arch == 'x86_64'
       '/usr/bin/ansible',
       '/usr/bin/chromium-browser',
       '/usr/bin/conky',
-      '/usr/bin/docker',
       '/usr/bin/filezilla',
       '/usr/bin/gh',
       '/usr/bin/nmap',
