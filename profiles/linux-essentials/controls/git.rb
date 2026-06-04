@@ -34,7 +34,7 @@ control 'git-02' do
 
   describe ini(gitconfig_path) do
     its(['user', 'email']) { should cmp emailAddress }
-    its(['alias', 'all']) { should cmp '"!f() { ls | xargs -I{} git -C {} $1; }; f"' }
+    its(['alias', 'all']) { should cmp '"!f() { ls -A | xargs -I{} git -C {} $1; }; f"' }
     its(['credential', 'helper']) { should cmp 'cache --timeout=3600' }
     its(['pull', 'rebase']) { should cmp 'false' }
 

@@ -1,5 +1,7 @@
 title 'Docker Checks'
 
+mode = '0755'
+
 control 'docker-01' do
   impact 1.0
   title 'Check for amd64 specific docker packages'
