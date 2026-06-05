@@ -65,6 +65,13 @@ services:
     command: check profiles/linux-essentials --chef-license=accept
     tty: *tty
 
+  check-profile-desktop-essentials:
+    image: &inspec-image chef/inspec:5.22.76
+    volumes: *volumes
+    working_dir: *default-workdir
+    command: check profiles/desktop-essentials --chef-license=accept
+    tty: *tty
+
   check-profile-ollama-essentials:
     image: &inspec-image chef/inspec:5.22.76
     volumes: *volumes

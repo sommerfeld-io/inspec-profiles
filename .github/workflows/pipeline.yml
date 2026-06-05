@@ -73,7 +73,7 @@ jobs:
     name: ${{ matrix.profile }}
     strategy:
       matrix:
-        profile: ['container-essentials', 'linux-essentials', 'ollama-essentials']
+        profile: ['container-essentials', 'linux-essentials', 'desktop-essentials', 'ollama-essentials']
     steps:
       - name: Checkout code
         uses: actions/checkout@v6

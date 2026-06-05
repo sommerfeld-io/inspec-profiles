@@ -15,6 +15,8 @@ This repository contains multiple profiles in subfolders. You cannot run them di
 
 - [container-essentials](profiles/container-essentials/README.md)
 - [linux-essentials](profiles/linux-essentials/README.md)
+- [desktop-essentials](profiles/desktop-essentials/README.md)
+- [ollama-essentials](profiles/ollama-essentials/README.md)
 
 All profiles are tested with [`chef/inspec:5.22.76`](https://hub.docker.com/r/chef/inspec).
 

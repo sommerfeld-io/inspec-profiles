@@ -1,0 +1,21 @@
+---
+name: desktop-essentials
+title: desktop-essentials profile
+maintainer: Sebastian Sommerfeld
+copyright: sommerfeld.io
+copyright_email: sebastian@sommerfeld.io
+license: MIT
+summary: Library compliance profile for desktop-specific Linux checks
+version: 0.6.3
+supports:
+  platform: os
+inputs:
+  - name: username
+    value: sebastian
+    description: Should correspond to the {{ ansible_user }} variable in ansible
+  - name: emailAddress
+    value: sebastian@sommerfeld.io
+    description: Email address of the user
+  - name: default_mode
+    value: '0755' # u=rwx,g=rx,o=rx
+    description: The mode for the files and directories

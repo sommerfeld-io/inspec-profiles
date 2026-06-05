@@ -1,10 +1,12 @@
-# Profile `linux-essentials`
+# Profile `desktop-essentials`
 
-The `linux-essentials` profile ensures Linux hosts comply with the same shared foundational set of rules.
+The `desktop-essentials` profile contains desktop-only compliance checks that complement the shared `linux-essentials` baseline.
 
 > :zap: **Note**: This profile is intended to run against our infrastructure and is not designed for public use. It may contain checks that are specific to our environment and may not be applicable to other systems.
 
-Add a dependency to the `inspec.yml` file:
+For Ubuntu desktop nodes, use this profile together with `linux-essentials`.
+
+Add dependencies to the `inspec.yml` file:
 
 ```yaml
 ---
@@ -24,15 +26,21 @@ depends:
     branch: main
     # tag: v0.0.2
     relative_path: profiles/linux-essentials
+  - name: desktop-essentials
+    git: https://github.com/sommerfeld-io/inspec-profiles.git
+    branch: main
+    # tag: v0.0.2
+    relative_path: profiles/desktop-essentials
 ```
 
-Call the profile from a control file (e.g., `some-control.rb`):
+Call the profiles from a control file (e.g., `some-control.rb`):
 
 ```rb
-title "Checks for some basic stuff"
+title "Checks for workstation-only software"
 
 include_controls 'linux-essentials' do
 end
-```
 
-For Ubuntu desktop nodes, combine this profile with [`desktop-essentials`](../desktop-essentials/README.md) to add workstation-specific checks.
+include_controls 'desktop-essentials' do
+end
+```
