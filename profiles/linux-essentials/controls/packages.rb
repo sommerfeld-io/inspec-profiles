@@ -29,28 +29,19 @@ end
 if os.arch == 'x86_64'
   control 'packages-02-amd64' do
     impact 1.0
-    title 'Check for amd64 specific packages'
-    desc 'Ensure amd64 specific packages are installed (desktop workstations)'
+    title 'Check for shared amd64 packages'
+    desc 'Ensure shared amd64 packages are installed on Ubuntu desktop and server nodes'
 
     should_exist = [
       '/usr/bin/ansible',
-      '/usr/bin/chromium-browser',
-      '/usr/bin/conky',
-      '/usr/bin/filezilla',
       '/usr/bin/gh',
       '/usr/bin/nmap',
-      '/usr/bin/p7zip',
-      '/usr/bin/rar',
-      '/usr/bin/rpi-imager',
-      '/usr/bin/subl', # sublime text
-      '/usr/bin/tilix',
-      '/usr/bin/unrar',
-      '/usr/bin/pre-commit',
       '/usr/bin/hostnamectl',
       '/usr/local/bin/ctop',
       '/usr/bin/node',
       '/usr/bin/npm',
       '/usr/bin/npx',
+      '/usr/bin/pre-commit',
     ]
     should_exist.each do |binary|
       describe file(binary) do
@@ -61,7 +52,6 @@ if os.arch == 'x86_64'
 
     should_not_exist = [
       '/usr/bin/asciidoctor',
-      '/usr/bin/balena-etcher',
       '/usr/bin/minikube',
       '/usr/bin/yarn',
       '/usr/local/bin/helm',
@@ -76,7 +66,7 @@ if os.arch == 'x86_64'
   control 'packages-03-amd64-node-applications' do
     impact 1.0
     title 'Check for amd64 specific node applications'
-    desc 'Ensure amd64 specific node applications are installed (desktop workstations)'
+    desc 'Ensure amd64 specific node applications are installed on Ubuntu desktop and server nodes'
 
     should_exist = [
       "/home/#{username}/.local/bin/gemini",
@@ -89,70 +79,12 @@ if os.arch == 'x86_64'
       end
     end
 
-    should_not_exist = [
-      '/usr/bin/asciidoctor',
-      '/usr/bin/balena-etcher',
-      '/usr/bin/minikube',
-      '/usr/bin/yarn',
-      '/usr/local/bin/helm',
-    ]
-    should_not_exist.each do |binary|
-      describe file(binary) do
-        it { should_not exist }
-      end
-    end
-  end
-
-  control 'packages-04-amd64' do
-    impact 1.0
-    title 'Check for amd64 specific snap packages'
-    desc 'Ensure amd64 specific snap packages are installed (desktop workstations)'
-
-    should_exist = [
-      '/snap/bin/code',
-      '/snap/bin/postman',
-      '/snap/bin/spotify',
-    ]
-    should_exist.each do |binary|
-      describe file(binary) do
-        it { should exist }
-        its('mode') { should cmp mode }
-      end
-    end
-
-    should_not_exist = [
-      '/snap/bin/intellij-idea-community',
-      '/snap/bin/intellij-idea-ultimate',
-    ]
-    should_not_exist.each do |binary|
-      describe file(binary) do
-        it { should_not exist }
-      end
-    end
-  end
-
-  control 'packages-05-amd64' do
-    impact 1.0
-    title 'Check for amd64 specific packages (media players etc.)'
-    desc 'Ensure amd64 specific packages (media players etc.) are installed (desktop workstations)'
-
-    should_exist = [
-      '/usr/bin/asunder',
-      '/usr/bin/brasero',
-      '/usr/bin/vlc',
-    ]
-    should_exist.each do |binary|
-      describe file(binary) do
-        it { should exist }
-        its('mode') { should cmp mode }
-      end
-    end
   end
 
   control 'packages-06-virtualization' do
     impact 1.0
     title 'Check for virtualization packages on amd64'
-    desc 'Ensure  virtualization packages on amd64 machines are installed (desktop workstations)'
+    desc 'Ensure virtualization packages on amd64 machines are installed'
 
     should_exist = [
       '/usr/bin/vagrant',

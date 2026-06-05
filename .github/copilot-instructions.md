@@ -27,7 +27,8 @@ This is a **Chef InSpec compliance profiles** collection for the [sommerfeld-io]
 | Profile | Purpose |
 |---------|---------|
 | `container-essentials` | Compliance checks for container images |
-| `linux-essentials` | Checks for workstations and VMs (OS, packages, bash config, git, docker, ssh, etc.) |
+| `linux-essentials` | Shared checks for Linux hosts (OS, packages, bash config, git, docker, ssh, etc.) |
+| `desktop-essentials` | Desktop-only checks layered on top of `linux-essentials` |
 | `ollama-essentials` | Checks for Ollama-enabled machines |
 
 Each profile lives in `profiles/<name>/` with an `inspec.yml` (metadata + inputs) and `controls/*.rb` (control files).
@@ -43,7 +44,7 @@ All commands require Docker to be running.
 | `task cleanup` | Prunes Docker containers/volumes and resets filesystem permissions |
 
 Individual linters: `docker compose up lint-<yaml|filenames|folders|workflows|markdown-links> --exit-code-from lint-<name>`
-Individual profile check: `docker compose up check-profile-<container-essentials|linux-essentials|ollama-essentials> --exit-code-from check-profile-<name>`
+Individual profile check: `docker compose up check-profile-<container-essentials|linux-essentials|desktop-essentials|ollama-essentials> --exit-code-from check-profile-<name>`
 
 See [.github/skills/lint-and-fix/SKILL.md](.github/skills/lint-and-fix/SKILL.md) for the full lint-and-fix workflow.
 
