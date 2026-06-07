@@ -19,7 +19,7 @@
   },
   "overrides": {
     "@semantic-release/npm": {
-      "npm": "^11.16.0"
+      "npm": "11.16.0"
     }
   }
 }
