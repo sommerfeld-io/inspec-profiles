@@ -27,7 +27,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: true
       - name: Login to Container Registry
@@ -51,7 +51,7 @@ jobs:
         linter: ['yaml', 'workflows', 'filenames', 'folders', 'markdown-links']
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: true
       - name: Login to Container Registry
@@ -76,7 +76,7 @@ jobs:
         profile: ['container-essentials', 'linux-essentials', 'desktop-essentials', 'ollama-essentials']
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: true
       - name: Login to Container Registry
