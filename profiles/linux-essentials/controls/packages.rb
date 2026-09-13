@@ -37,7 +37,6 @@ if os.arch == 'x86_64'
       '/usr/bin/gh',
       '/usr/bin/nmap',
       '/usr/bin/hostnamectl',
-      '/usr/local/bin/ctop',
       '/usr/bin/node',
       '/usr/bin/npm',
       '/usr/bin/npx',
@@ -48,6 +47,14 @@ if os.arch == 'x86_64'
         it { should exist }
         its('mode') { should cmp mode }
       end
+    end
+
+    # ctop is installed via a direct download to /usr/local/bin on Ubuntu, but via pacman
+    # (which places binaries in /usr/bin) on Arch/Omarchy.
+    ctop_path = os.name == 'ubuntu' ? '/usr/local/bin/ctop' : '/usr/bin/ctop'
+    describe file(ctop_path) do
+      it { should exist }
+      its('mode') { should cmp mode }
     end
 
     should_not_exist = [
@@ -75,7 +82,7 @@ if os.arch == 'x86_64'
     should_exist.each do |binary|
       describe file(binary) do
         it { should exist }
-        its('mode') { should cmp 0770 }
+        its('mode') { should cmp mode }
       end
     end
 

@@ -8,8 +8,11 @@ control 'task-01' do
   title 'Ensure task is installed'
   desc 'Ensure task is installed'
 
+  # task is installed via apt to /usr/bin on Ubuntu. On Arch/Omarchy, the pacman package
+  # only ships /usr/bin/go-task, and the role symlinks /usr/local/bin/task to it.
+  task_path = os.name == 'ubuntu' ? '/usr/bin/task' : '/usr/local/bin/task'
   should_exist = [
-    '/usr/bin/task',
+    task_path,
   ]
   should_exist.each do |binary|
     describe file(binary) do
