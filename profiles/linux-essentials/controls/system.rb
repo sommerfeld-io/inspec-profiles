@@ -15,3 +15,14 @@ control 'system-01' do
     it { should be_in ['26.04', '26.10'] } if os.name == 'ubuntu'
   end
 end
+
+control 'system-02' do
+  impact 1.0
+  title 'Verify kernel parameter defaults'
+  desc 'Ensure kernel parameter defaults match the expected operating system settings'
+
+  describe kernel_parameter('fs.protected_regular') do
+    its('value') { should eq 1 } if os.name == 'arch'
+    its('value') { should be_in [2, nil] } if os.name == 'ubuntu'
+  end
+end
