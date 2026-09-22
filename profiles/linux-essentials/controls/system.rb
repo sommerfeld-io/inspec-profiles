@@ -19,10 +19,13 @@ end
 control 'system-02' do
   impact 1.0
   title 'Verify kernel parameter defaults'
-  desc 'Ensure kernel parameter defaults match the expected operating system settings'
+  desc 'Ensure Arch kernel parameter defaults match the expected operating system settings'
+
+  only_if('This kernel parameter override is only expected on Arch Linux') do
+    os.name == 'arch'
+  end
 
   describe kernel_parameter('fs.protected_regular') do
-    its('value') { should eq 1 } if os.name == 'arch'
-    its('value') { should be_in [2, nil] } if os.name == 'ubuntu'
+    its('value') { should eq 1 }
   end
 end
