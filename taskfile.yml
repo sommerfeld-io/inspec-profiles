@@ -11,7 +11,6 @@ includes:
   bmad: .task/bmad/taskfile.yml
   cleanup: .task/cleanup/taskfile.yml
   common: .task/common/taskfile.yml
-  copilot: .github/skills/taskfile.yml
 
 tasks:
 

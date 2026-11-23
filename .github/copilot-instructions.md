@@ -46,8 +46,6 @@ All commands require Docker to be running.
 Individual linters: `docker compose up lint-<yaml|filenames|folders|workflows|markdown-links> --exit-code-from lint-<name>`
 Individual profile check: `docker compose up check-profile-<container-essentials|linux-essentials|desktop-essentials|ollama-essentials> --exit-code-from check-profile-<name>`
 
-See [.github/skills/lint-and-fix/SKILL.md](.github/skills/lint-and-fix/SKILL.md) for the full lint-and-fix workflow.
-
 ## InSpec Control Conventions
 
 - **Control ID format**: `<topic>-<NN>` (e.g., `packages-01`, `bash-02`, `docker-01`). Each file owns its own namespace.
