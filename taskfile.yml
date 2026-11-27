@@ -18,8 +18,9 @@ tasks:
     desc: 'Run all project linters outside of Dockerfile linters'
     cmds:
       - task: cleanup:filesystem
-      - for: ['yaml', 'filenames', 'folders', 'workflows', 'markdown-links']
+      - for: ['yaml', 'filenames', 'folders', 'workflows']
         cmd: docker compose up lint-{{ .ITEM }} --exit-code-from lint-{{ .ITEM }}
+      - cmd: docker compose up markdown-links --exit-code-from markdown-links
 
   check:
     desc: 'Check all Inspec profiles'
