@@ -43,7 +43,7 @@ All commands require Docker to be running.
 | `task check` | Validates all InSpec profiles with `chef/inspec:5.22.76` |
 | `task cleanup` | Prunes Docker containers/volumes and resets filesystem permissions |
 
-Individual linters: `docker compose up lint-<yaml|filenames|folders|workflows|markdown-links> --exit-code-from lint-<name>`
+Individual linters: `docker compose up lint-<yaml|filenames|folders|workflows> --exit-code-from lint-<name>`, link check: `docker compose up markdown-links --exit-code-from markdown-links`
 Individual profile check: `docker compose up check-profile-<container-essentials|linux-essentials|desktop-essentials|ollama-essentials> --exit-code-from check-profile-<name>`
 
 ## InSpec Control Conventions
